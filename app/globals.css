@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.sh {
+  border-radius: 40px;
+  box-shadow: 12px 12px 30px -3px rgba(0, 0, 0, 1);
+}
+
+body {
+  background-color: #FFFF;
+  color: #2c2c2c;
+  margin: 0;
+  height: 100vh;
+  padding: 30px;
+  font-size: 1.2em;
+  overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs-wrapper {
+  overflow-x: scroll;
+}
+.tabs-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+
+.btn-tab {
+  color: #909090;
+  border: 2px solid #2c2c2c;;
+  border-start-end-radius: 25px;
+  border-start-start-radius: 25px;
+  font-weight: 600;
+  width: 100%;
+  height: 100%;
+  box-sizing: content-box;
+  background-color: transparent;
+  transition: all .3s;
+  padding: 0 20px;
+}
+
+.btn-tab-active {
+
+  width: 100%;
+  height: 100%;
+  
+  background-color: transparent;
+  outline: none;
+  color: #BED82F;
+  border: 2px solid #BED82F;
+  border-start-end-radius: 25px;
+  border-start-start-radius: 25px;
+  transition: all .3s;
+}
+
+.btn-light {
+  border: 1px solid #BED82F;
+  border-radius: 100px;
+  background-color: #FFFF;
+  color: #BED82F;
+}
+
+.btn-dark {
+  color: #FFFF;
+  background-color: #BED82F;
+  border-radius: 100px;
+  border: none;
+}
+
+.btn-dark a, .btn-light a {
+  padding: 15px 40px;
+  display: block;
+  font-weight: 500;
+}
+
+
+.content {
+  width: 100%;
+  margin-bottom: 200px;
+}
+
+
+.point {
+  border-radius: 100%;
+  background-color: #BED82F;
+  width: 8px;
+  height: 8px;
+
+}
+
+ @media screen and (min-width: 1024px) {
+  .content {
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-bottom: 200px;
+  }
+}
+
+
+.leaflet-control-attribution{
+  display: none !important;
+
+}
