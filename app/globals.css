@@ -59,6 +59,7 @@ body::-webkit-scrollbar {
   background-color: transparent;
   transition: all .3s;
   padding: 0 20px;
+  font-size: 0.8rem;
 }
 
 .btn-tab-active {
@@ -116,10 +117,22 @@ body::-webkit-scrollbar {
     margin: 0 auto;
     margin-bottom: 200px;
   }
+
+  .btn-dark a, .btn-light a {
+    padding: 15px 40px;
+    display: block;
+    font-weight: 500;
+  }  
+
+  .btn-tab {
+    font-size: 1.2rem;
+  }
+
 }
 
 
 .leaflet-control-attribution{
   display: none !important;
+  
 
 }

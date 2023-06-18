@@ -32,9 +32,9 @@ async function getObjects(rad, lat,lng, setNodes, setWays, callback){
 }
 
 
-export default function Map({callback, interactive}) {
-  const kras = [45.0430196, 38.9493056];
-  const [position, setPosition] = useState({ lat: kras[0], lng: kras[1] })
+export default function Map({callback, interactive, target}) {
+  // const kras = [45.0430196, 38.9493056];
+  const [position, setPosition] = useState({ lat: target[0], lng: target[1] })
   const [nodes, setNodes] = useState([])
   const [ways, setWays] = useState([])
   const ZOOM_LEVEL = 15
@@ -70,7 +70,7 @@ const filters = ['all', 'shop', 'cafe', 'restaurant', 'fast_food', 'pharmacy', '
   const filtered = getFiltered() 
 
   useEffect(() => {
-    getObjects(400, ...kras, setNodes, setWays, callback);
+    getObjects(400, ...target, setNodes, setWays, callback);
   }, []);
   
   return (

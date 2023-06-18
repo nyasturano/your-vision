@@ -1,10 +1,10 @@
 "use client";
 
-import '../main.css';
+import '../../main.css';
 import dynamic from 'next/dynamic'
 
 import { Unbounded } from 'next/font/google';
-import location from '../img/location.png';
+import location from '../../img/location.png';
 import { useState } from 'react';
 import { Fragment } from 'react';
 
@@ -67,7 +67,13 @@ export default function Page() {
             <div className={unbounded.className}><div className="lg:text-3xl text-[#BED82F]"> Анализ точки: </div></div>
             <div className="flex space-x-5 items-center">
                 <div className="shrink-0"><Image src={location} width={16} height={16}/></div>
-                <div> ул. Кропоткина, 50, Краснодар, Краснодарский край</div>
+                <div> ул. Селезнева, 140, Краснодар, Краснодарский край</div>
+            </div>
+        </div>
+        <div className="flex flex-col lg:flex-row lg:items-center items-start my-10 lg:space-x-16">
+            <div className={unbounded.className}><div className="lg:text-3xl text-[#BED82F]"> Бизнес: </div></div>
+            <div className="flex space-x-5 items-center">
+                <div> Аптека</div>
             </div>
         </div>
 
@@ -78,7 +84,7 @@ export default function Page() {
                 <div>
                     <Tab.Group>
                         <Tab.List className="tabs-wrapper">
-                            <div className="h-[80px] flex justify-between border-b-2 border-[#2c2c2c]">
+                            <div className="h-[45px] lg:h-[80px] flex justify-between border-b-2 border-[#2c2c2c]">
                             <Tab as={Fragment}>{({ selected }) => (<button className={selected ? 'btn-tab btn-tab-active' : 'btn-tab'}>Окружение</button>)}</Tab>
                             <Tab as={Fragment}>{({ selected }) => (<button className={selected ? 'btn-tab btn-tab-active' : 'btn-tab'}>Зона охвата</button>)}</Tab>
                             <Tab as={Fragment}>{({ selected }) => (<button className={selected ? 'btn-tab btn-tab-active' : 'btn-tab'}>Проходимость</button>)}</Tab>
@@ -89,15 +95,15 @@ export default function Page() {
                                 <div className="flex flex-col lg:flex-row w-full lg:h-[600px] h-[800px]">
                                     {/* map */}
                                     <div className="w-full h-full">
-                                        <Map interactive={false} callback={setNodes}/>
+                                        <Map interactive={false} callback={setNodes} target={[45.02576, 39.03529]}/>
                                     </div>
                                     {/* filter */}
-                                    <div className="bg-[#3C3C3C] p-8 lg:w-[400px] w-full">
+                                    <div className="bg-[#3C3C3C] p-8 lg:w-[400px] w-full overflow-y-scroll">
                                         {
                                             categories.map((filter, f_idx) => {
                                                 return <div>
                                                     <div className="flex justify-between">
-                                                        <div>{categories_ru[f_idx]}</div>
+                                                        <Point>{categories_ru[f_idx]}</Point>
                                                         <input type="checkbox" checked={checks[f_idx]} 
                                                             onChange={() => {setChecks(checks.map((f, i) => {
                                                                 if (i == f_idx) {
@@ -105,13 +111,14 @@ export default function Page() {
                                                                 } else {
                                                                     return f;
                                                                 }
-                                                            })); render();}}></input>
+                                                            }));}}></input>
                                                     </div>
 
                                                     <div>
                                                         {nodes.map((node, n_idx) => {
-                                                                if (node.tags.amenity == filter && node.tags.name)
-                                                                    return <div className="ps-4 text-[#D9D9D9]">{node.tags.name}</div>
+                                                            console.log(node.tags.amenity)
+                                                                if ((node.tags.amenity == filter || ('shop' in node.tags && filter == 'shop')) && node.tags.name)
+                                                                    return <div className="ps-6 my-3 font-light text-[#D9D9D9] text-xs">{node.tags.name} </div>
                                                         })}
                                                     </div>
                                                 </div>
@@ -147,9 +154,9 @@ export default function Page() {
             
 
             {/* Плюсы и минусы */}
-            <div className="flex rounded-[25px] px-5 bg-[#3C3C3C] sh p-5">
-                <div className="w-full border-r-2 border-dashed border-[#BED82F] ps-5">
-                    <div className={unbounded.className}><div className="lg:text-3xl text-[#BED82F]"> Плюсы </div></div>
+            <div className="flex flex-col lg:flex-row rounded-[25px] px-5 bg-[#3C3C3C] sh p-8">
+                <div className="w-full lg:border-r-2 lg:border-dashed lg:border-[#BED82F] ps-5">
+                    <div className={unbounded.className}><div className="lg:text-3xl lg:mb-3 text-[#BED82F]"> Плюсы </div></div>
                     <div>
                         <Point>
                             Очень высокий пешеходный трафик - 2 377 чел/час.
@@ -184,13 +191,10 @@ export default function Page() {
                         <Point>
                     Рядом есть 9 остановок общественного транспорта. <br/>
                         </Point>
-
-
                     </div>
-
                 </div>
                 <div className="w-full ps-5">
-                    <div className={unbounded.className}><div className="lg:text-3xl text-[#BED82F]"> Минусы </div></div>
+                    <div className={unbounded.className}><div className="lg:text-3xl lg:mb-3 lg:mt-0 mt-10 text-[#BED82F]"> Минусы </div></div>
                     <div>
                         <Point>Поблизости нет станций метро.</Point>
                     </div>
