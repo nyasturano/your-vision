@@ -1,6 +1,7 @@
 "use client";
 
 import '../main.css';
+import dynamic from 'next/dynamic'
 
 import { Unbounded } from 'next/font/google';
 import location from '../img/location.png';
@@ -9,7 +10,6 @@ import { Fragment } from 'react';
 
 import Header from '@/Components/Header';
 import Image from 'next/image';
-import Map from '@/Components/Map';
 import { Tab } from '@headlessui/react';
 
 import map1 from '@/app/img/map1.png';
@@ -20,7 +20,9 @@ const unbounded = Unbounded({ subsets: ['cyrillic'] })
 const categories_ru = ['Магазины', 'Кафе', 'Рестораны', 'Фаст-фуд', 'Аптеки', 'Бары', 'Школы', 'Банки', 'Банкоматы', 'Кинотеатры', 'Театры'];
 const categories = ['shop', 'cafe', 'restaurant', 'fast_food', 'pharmacy', 'bar', 'school', 'bank', 'atm', 'cinema', 'theatre']
 
-
+const Map = dynamic(() => import('@/Components/Map'), {
+    ssr: false,
+  })
 
 export default function Page() {
     const [nodes, setNodes] = useState([]);
