@@ -67,7 +67,7 @@ export default function Page() {
             <div className={unbounded.className}><div className="lg:text-3xl text-[#BED82F]"> Анализ точки: </div></div>
             <div className="flex space-x-5 items-center">
                 <div className="shrink-0"><Image src={location} width={16} height={16}/></div>
-                <div> ул. Селезнева, 140, Краснодар, Краснодарский край</div>
+                <div> ул. Селезнева, 149, Краснодар, Краснодарский край</div>
             </div>
         </div>
         <div className="flex flex-col lg:flex-row lg:items-center items-start my-10 lg:space-x-16">

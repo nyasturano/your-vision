@@ -33,7 +33,10 @@ async function getObjects(rad, lat,lng, setNodes, setWays, callback){
 
 
 export default function Map({callback, interactive, target}) {
-  // const kras = [45.0430196, 38.9493056];
+  if (!target) {
+    target = [45.0430196, 38.9493056];
+
+  }
   const [position, setPosition] = useState({ lat: target[0], lng: target[1] })
   const [nodes, setNodes] = useState([])
   const [ways, setWays] = useState([])

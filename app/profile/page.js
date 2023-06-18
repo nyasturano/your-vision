@@ -95,7 +95,7 @@ export default function Profile() {
                         <div className="text-[#909090] lg:text-sm text-[0.6rem] ps-3 pt-1">Бизнес</div>
                     </div>
                     <div className="flex flex-col">
-                        <div className="border-b-2 lg:text-base text-xs border-[#D9D9D9] mb-8 pb-3 pe-3">
+                        <div className="border-b-2 lg:text-base text-xs border-[#D9D9D9] lg:mb-8 mb-[27px] pb-3 pe-3">
                             <a className="hover:text-[#B5B5B5] transition-all" href="/analysis/1">Показать</a>
                         </div>
                         <div className="border-b-2 lg:text-base text-xs border-[#D9D9D9] pt-6 pb-3 pe-3">
